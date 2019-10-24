@@ -13,16 +13,20 @@ class ZhihuSpider(scrapy.Spider):
     start_urls = ['https://www.zhihu.com/']
     offset = 0
     limit = 20
-    start_user = 'excited-vczh'  # 以轮子哥的账户作为起始账户
+
+    # 以轮子哥的账户作为起始账户
+    start_user = 'excited-vczh'
 
     user_url = 'https://www.zhihu.com/api/v4/members/{user}?include={include}'
     user_query = 'allow_message,is_followed,is_following,is_org,is_blocking,employments,answer_count,follower_count,' \
                  'articles_count,gender,badge[?(type=best_answerer)].topics'
 
+    # 关注列表接口地址
     followees_url = 'https://www.zhihu.com/api/v4/members/{user}/followees?include={include}&offset={offset}&limit={limit}'
     followees_query = 'data[*].answer_count,articles_count,gender,follower_count,is_followed,is_following,' \
                       'badge[?(type=best_answerer)].topics '
 
+    # 粉丝列表接口地址
     fllowers_url = 'https://www.zhihu.com/api/v4/members/{user}/followers?include{include}&offset={offset}&limit={' \
                    'limit} '
     fllowers_query = 'data[*].gender,answer_count,articles_count,follower_count,is_following,is_followed'
