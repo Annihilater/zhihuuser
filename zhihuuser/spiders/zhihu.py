@@ -52,8 +52,9 @@ class ZhihuSpider(scrapy.Spider):
         :param response:
         :return:
         """
-        with open('data/user.html', 'w') as f:
-            f.write(response.text)
+        # 将相应内容写入文件，方便查看
+        # with open('data/user.html', 'w') as f:
+        #     f.write(response.text)
 
         result = json.loads(response.text)
         item = UserItem()
@@ -76,8 +77,9 @@ class ZhihuSpider(scrapy.Spider):
         :param response:
         :return:
         """
-        with open('data/follows.html', 'w') as f:
-            f.write(response.text)
+        # 将相应内容写入文件，方便查看
+        # with open('data/follows.html', 'w') as f:
+        #     f.write(response.text)
 
         results = json.loads(response.text)
         if 'data' in results.keys():
