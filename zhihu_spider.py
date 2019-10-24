@@ -4,5 +4,6 @@
 # @Author: yanmiexingkong
 # @email : yanmiexingkong@gmail.com
 # @File  : zhihu_spider.py
+from scrapy import cmdline
 
-
+cmdline.execute('scrapy crawl zhihu'.split())
