@@ -1,5 +1,30 @@
 # Scrapy 抓取知乎用户信息
 
+## 项目使用方法
+
+1. 克隆项目
+
+    ```shell
+    git clone https://github.com/Annihilater/zhihuuser.git
+    ```
+
+2. 安装依赖
+
+    ```shell
+    pip install -r requirements.txt
+    ```
+
+3. 本机启动 MongoDB 数据库
+
+4. 运行爬虫
+
+    ```shell
+    scrapy crawl zhihu
+    ```
+
+5. 然后就会在 MongoDB 的图形化客户端看到
+    ![image-20191024173110932](https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-10-24-093111.png)
+
 ## 思路
 
 1. 选择起始人：大 V
@@ -60,28 +85,3 @@ update_one(filter, update, upsert=False, bypass_document_validation=False, colla
 `upsert`：如果没有查询到数据，是否执行插入操作
 
 
-
-## 项目使用方法
-
-1. 克隆项目
-
-    ```shell
-    git clone https://github.com/Annihilater/zhihuuser.git
-    ```
-
-2. 安装依赖
-
-    ```shell
-    pip install -r requirements.txt
-    ```
-
-3. 本机启动 MongoDB 数据库
-
-4. 运行爬虫
-
-    ```shell
-    scrapy crawl zhihu
-    ```
-
-5. 然后就会在 MongoDB 的图形化客户端看到
-    ![image-20191024173110932](https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-10-24-093111.png)
