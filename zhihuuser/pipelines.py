@@ -35,6 +35,5 @@ class MongoPipeline(object):
 
     def process_item(self, item, spider):
         # 去重：先去数据库中依据 url_token 查找 item，如果找到了则更新 item，如果找不到，则插入 item
-        self.db[self.collection_name].update({'url_token': item['url_token']}, {'$set': item}, True)
-        self.db[self.collection_name].insert_one(dict(item))
+        self.db[self.collection_name].update_one({'url_token': item['url_token']}, {'$set': item}, True)
         return item
