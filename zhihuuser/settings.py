@@ -69,7 +69,7 @@ DEFAULT_REQUEST_HEADERS = {
 ITEM_PIPELINES = {
     # 'zhihuuser.pipelines.ZhihuuserPipeline': 300,
     'zhihuuser.pipelines.MongoPipeline': 300,
-    'scrapy_redis.pipelines.RedisPipeline': 301,
+    # 'scrapy_redis.pipelines.RedisPipeline': 301,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
