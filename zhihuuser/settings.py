@@ -8,14 +8,12 @@
 #     https://docs.scrapy.org/en/latest/topics/settings.html
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+from secure import redis_url
 
 BOT_NAME = 'zhihuuser'
 
 SPIDER_MODULES = ['zhihuuser.spiders']
 NEWSPIDER_MODULE = 'zhihuuser.spiders'
-
-MONGO_URI = 'localhost'
-MONGO_DATABASE = 'zhihu'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'zhihuuser (+http://www.yourdomain.com)'
@@ -69,8 +67,9 @@ DEFAULT_REQUEST_HEADERS = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'zhihuuser.pipelines.ZhihuuserPipeline': 300,
-    'zhihuuser.pipelines.MongoPipeline': 400,
+    # 'zhihuuser.pipelines.ZhihuuserPipeline': 300,
+    'zhihuuser.pipelines.MongoPipeline': 300,
+    'scrapy_redis.pipelines.RedisPipeline': 301,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -93,3 +92,12 @@ ITEM_PIPELINES = {
 # HTTPCACHE_DIR = 'httpcache'
 # HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+# MongoDB
+MONGO_URI = 'localhost'
+MONGO_DATABASE = 'zhihu'
+
+# Scrapy-Redis
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+REDIS_URL = redis_url  # 'redis://user:password@ip:port'
